@@ -49,7 +49,7 @@
 - `backend/` : Flask API and modules
 - `frontend/` : Static web UI
 - `requirements.txt` : Python deps
-- `.env.example`: Environment variables example
+- `.env`: Environment variables 
 
 ## License
 MIT
