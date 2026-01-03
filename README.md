@@ -50,6 +50,3 @@
 - `frontend/` : Static web UI
 - `requirements.txt` : Python deps
 - `.env`: Environment variables 
-
-## License
-MIT
