@@ -1,0 +1,29 @@
+2026-05-23 18:23:21,518 [WARNING] google_genai._api_client: Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2026-05-23 18:23:21,675 [INFO] summarizer: Loading SentenceTransformer model (all-MiniLM-L6-v2)…
+2026-05-23 18:23:21,696 [INFO] sentence_transformers.SentenceTransformer: Use pytorch device_name: cuda:0
+2026-05-23 18:23:21,696 [INFO] sentence_transformers.SentenceTransformer: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-05-23 18:23:26,856 [INFO] __main__: PaperSummarizer initialised (model=gemini-3.5-flash)
+2026-05-23 18:23:26,865 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:7860
+ * Running on http://172.21.183.27:7860
+2026-05-23 18:23:26,865 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2026-05-23 18:23:35,723 [INFO] werkzeug: 172.21.183.27 - - [23/May/2026 18:23:35] "GET / HTTP/1.1" 200 -
+2026-05-23 18:23:35,766 [INFO] werkzeug: 172.21.183.27 - - [23/May/2026 18:23:35] "GET /style.css HTTP/1.1" 200 -
+2026-05-23 18:23:35,805 [INFO] werkzeug: 172.21.183.27 - - [23/May/2026 18:23:35] "GET /app.js HTTP/1.1" 200 -
+2026-05-23 18:23:36,761 [INFO] werkzeug: 172.21.183.27 - - [23/May/2026 18:23:36] "GET /favicon.ico HTTP/1.1" 200 -
+2026-05-23 18:23:36,854 [INFO] werkzeug: 172.21.183.27 - - [23/May/2026 18:23:36] "[36mGET /favicon.ico HTTP/1.1[0m" 304 -
+2026-05-23 18:23:56,844 [INFO] werkzeug: 172.21.183.27 - - [23/May/2026 18:23:56] "POST /api/session HTTP/1.1" 200 -
+2026-05-23 18:23:57,113 [INFO] werkzeug: 172.21.183.27 - - [23/May/2026 18:23:57] "POST /api/stream-upload HTTP/1.1" 200 -
+2026-05-23 18:23:59,125 [INFO] google_genai.models: AFC is enabled with max remote calls: 10.
+2026-05-23 18:24:02,747 [INFO] httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-05-23 18:24:02,842 [INFO] google_genai.models: AFC is enabled with max remote calls: 10.
+2026-05-23 18:24:11,939 [INFO] httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-05-23 18:24:12,047 [INFO] google_genai.models: AFC is enabled with max remote calls: 10.
+2026-05-23 18:24:26,140 [INFO] httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-05-23 18:24:26,283 [INFO] google_genai.models: AFC is enabled with max remote calls: 10.
+2026-05-23 18:24:32,477 [INFO] httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-05-23 18:24:36,987 [INFO] werkzeug: 172.21.183.27 - - [23/May/2026 18:24:36] "POST /api/report HTTP/1.1" 200 -
+2026-05-23 18:24:52,292 [INFO] google_genai.models: AFC is enabled with max remote calls: 10.
+2026-05-23 18:24:57,359 [INFO] httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-05-23 18:24:57,363 [INFO] werkzeug: 172.21.183.27 - - [23/May/2026 18:24:57] "POST /api/chat HTTP/1.1" 200 -

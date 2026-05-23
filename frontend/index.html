@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0d0f1a" />
+  <title>PaperMind AI — Research Paper Analyzer & Reviewer</title>
+  <meta name="description" content="Transform complex research papers into actionable insights instantly. AI-powered summarization, critique, future directions, and interactive Q&A — powered by Gemini 1.5 Pro + RAG." />
+  <meta property="og:title" content="PaperMind AI — Research Paper Analyzer" />
+  <meta property="og:description" content="Upload any research PDF and get AI-generated summary, critique, and future research directions in minutes." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════ NAVBAR ═══ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="logo" id="logo-link">
+        <div class="logo-icon"><i class="fas fa-brain"></i></div>
+        <span>Paper<span class="logo-accent">Mind</span></span>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+        <li><a href="#pricing" class="nav-link">Pricing</a></li>
+        <li><a href="#app" class="nav-link">Analyzer</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="#app" class="btn btn-nav">Try Free <i class="fas fa-arrow-right"></i></a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════ HERO ═══ -->
+  <section id="home" class="hero">
+    <div class="hero-bg">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+      <div class="grid-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-sparkles"></i>
+        <span>Gemini 3.5 Flash · 3.1 Pro · RAG</span>
+      </div>
+
+      <h1 class="hero-title">
+        Understand Any<br>
+        <span class="gradient-text">Research Paper</span><br>
+        In Minutes
+      </h1>
+
+      <p class="hero-subtitle">
+        Upload a PDF and instantly receive an AI-generated summary, expert critique,
+        future research directions — and chat with your paper like a colleague.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#app" class="btn btn-primary" id="hero-cta">
+          <i class="fas fa-rocket"></i> Analyze a Paper Free
+        </a>
+        <a href="#how-it-works" class="btn btn-ghost">
+          <i class="fas fa-play-circle"></i> See How It Works
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="stat-num" data-target="12000">0</span><span class="stat-suffix">+</span>
+          <p>Papers Analyzed</p>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="hero-stat">
+          <span class="stat-num" data-target="98">0</span><span class="stat-suffix">%</span>
+          <p>Accuracy Rate</p>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="hero-stat">
+          <span class="stat-num" data-target="3">0</span><span class="stat-suffix">min</span>
+          <p>Average Time</p>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="hero-stat">
+          <span class="stat-num" data-target="4200">0</span><span class="stat-suffix">+</span>
+          <p>Researchers</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="paper-mockup">
+        <div class="mockup-header">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="mockup-title">analysis_result.json</span>
+        </div>
+        <div class="mockup-body">
+          <div class="code-line"><span class="key">"summary"</span><span class="colon">:</span> <span class="val">"The paper proposes a novel..."</span></div>
+          <div class="code-line"><span class="key">"critique"</span><span class="colon">:</span> <span class="val">"Strengths: robust methodology..."</span></div>
+          <div class="code-line"><span class="key">"future"</span><span class="colon">:</span> <span class="val">"1. Extend to multi-modal data..."</span></div>
+          <div class="code-line"><span class="key">"citations"</span><span class="colon">:</span> <span class="num">47</span> <span class="comment">// extracted</span></div>
+          <div class="code-line"><span class="key">"confidence"</span><span class="colon">:</span> <span class="num">0.96</span></div>
+        </div>
+        <div class="mockup-footer">
+          <div class="status-dot"></div> <span>Analysis complete</span>
+        </div>
+      </div>
+      <div class="floating-badges">
+        <div class="float-badge badge-1"><i class="fas fa-check-circle"></i> Summary Ready</div>
+        <div class="float-badge badge-2"><i class="fas fa-star"></i> 5-star critique</div>
+        <div class="float-badge badge-3"><i class="fas fa-comments"></i> Chat enabled</div>
+      </div>
+    </div>
+
+    <a href="#features" class="scroll-hint" aria-label="Scroll down">
+      <i class="fas fa-chevron-down"></i>
+    </a>
+  </section>
+
+  <!-- ════════════════════════════════════════ FEATURES ═══ -->
+  <section id="features" class="features">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Why PaperMind</span>
+        <h2 class="section-title">Everything Researchers Need</h2>
+        <p class="section-subtitle">From raw PDF to deep insight in one click</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card" tabindex="0">
+          <div class="feature-icon icon-purple"><i class="fas fa-magic-wand-sparkles"></i></div>
+          <h3>Smart Summarization</h3>
+          <p>RAG-powered bullet summaries that capture problem statement, methods, findings, and conclusions — not just the abstract.</p>
+          <div class="feature-tag">RAG + Gemini</div>
+        </div>
+        <div class="feature-card" tabindex="0">
+          <div class="feature-icon icon-blue"><i class="fas fa-microscope"></i></div>
+          <h3>Expert Critique</h3>
+          <p>Receive a balanced academic critique covering methodology rigor, statistical validity, clarity, and reproducibility.</p>
+          <div class="feature-tag">Academic-grade</div>
+        </div>
+        <div class="feature-card" tabindex="0">
+          <div class="feature-icon icon-teal"><i class="fas fa-compass-drafting"></i></div>
+          <h3>Future Directions</h3>
+          <p>5 specific, actionable research directions derived from the paper's gaps and conclusions — ready to cite.</p>
+          <div class="feature-tag">AI Insights</div>
+        </div>
+        <div class="feature-card" tabindex="0">
+          <div class="feature-icon icon-orange"><i class="fas fa-comments"></i></div>
+          <h3>Live Q&amp;A Chat</h3>
+          <p>Ask any question about the paper and get instant, cited answers grounded in the actual content — not hallucinated.</p>
+          <div class="feature-tag">Chat with Paper</div>
+        </div>
+        <div class="feature-card" tabindex="0">
+          <div class="feature-icon icon-rose"><i class="fas fa-file-lines"></i></div>
+          <h3>Metadata Extraction</h3>
+          <p>Automatically identifies title, authors, publication year, and DOI from the paper header — no manual entry needed.</p>
+          <div class="feature-tag">Auto-detect</div>
+        </div>
+        <div class="feature-card" tabindex="0">
+          <div class="feature-icon icon-indigo"><i class="fas fa-file-arrow-down"></i></div>
+          <h3>Rich PDF Reports</h3>
+          <p>Export a professionally formatted PDF report with metadata, summary, critique, excerpts, and references — shareable instantly.</p>
+          <div class="feature-tag">Export Ready</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ HOW IT WORKS ═══ -->
+  <section id="how-it-works" class="how-it-works">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">The Process</span>
+        <h2 class="section-title">From PDF to Insight in 4 Steps</h2>
+        <p class="section-subtitle">Powered by a real-time RAG pipeline</p>
+      </div>
+
+      <div class="steps-track">
+        <div class="step-item">
+          <div class="step-icon"><i class="fas fa-upload"></i></div>
+          <div class="step-num">01</div>
+          <h3>Upload PDF</h3>
+          <p>Drag &amp; drop or browse your research paper. Supports any academic PDF up to 10 MB.</p>
+        </div>
+        <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="step-item">
+          <div class="step-icon"><i class="fas fa-cubes"></i></div>
+          <div class="step-num">02</div>
+          <h3>Chunking &amp; Indexing</h3>
+          <p>The document is split into semantic chunks, embedded with SentenceTransformers, and indexed in FAISS.</p>
+        </div>
+        <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="step-item">
+          <div class="step-icon"><i class="fas fa-brain"></i></div>
+          <div class="step-num">03</div>
+          <h3>AI Analysis</h3>
+          <p>Gemini 3.5 Flash &amp; 3.1 Pro retrieve the most relevant chunks via RAG to generate grounded, accurate insights.</p>
+        </div>
+        <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
+        <div class="step-item">
+          <div class="step-icon"><i class="fas fa-sparkles"></i></div>
+          <div class="step-num">04</div>
+          <h3>Chat &amp; Export</h3>
+          <p>Ask follow-up questions in the chat panel or download a polished PDF report.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ PRICING ═══ -->
+  <section id="pricing" class="pricing">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Pricing</span>
+        <h2 class="section-title">Simple, Transparent Pricing</h2>
+        <p class="section-subtitle">Start for free. Upgrade when you need more power.</p>
+      </div>
+
+      <div class="billing-toggle">
+        <span id="toggle-monthly" class="toggle-label active">Monthly</span>
+        <label class="toggle-switch" aria-label="Toggle annual billing">
+          <input type="checkbox" id="billingToggle" />
+          <span class="toggle-slider"></span>
+        </label>
+        <span id="toggle-annual" class="toggle-label">Annual <span class="save-badge">Save 20%</span></span>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Free -->
+        <div class="price-card">
+          <div class="price-header">
+            <div class="plan-icon icon-teal"><i class="fas fa-seedling"></i></div>
+            <h3 class="plan-name">Free</h3>
+            <div class="plan-price">
+              <span class="price-currency">$</span>
+              <span class="price-amount" data-monthly="0" data-annual="0">0</span>
+              <span class="price-period">/mo</span>
+            </div>
+            <p class="plan-tagline">Perfect for occasional research</p>
+          </div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> 5 papers per month</li>
+            <li><i class="fas fa-check"></i> Summary &amp; critique</li>
+            <li><i class="fas fa-check"></i> Future directions</li>
+            <li><i class="fas fa-check"></i> PDF export</li>
+            <li class="disabled"><i class="fas fa-times"></i> Live Q&amp;A chat</li>
+            <li class="disabled"><i class="fas fa-times"></i> Metadata extraction</li>
+            <li class="disabled"><i class="fas fa-times"></i> API access</li>
+          </ul>
+          <a href="#app" class="btn btn-outline-plan">Get Started Free</a>
+        </div>
+
+        <!-- Pro — highlighted -->
+        <div class="price-card featured">
+          <div class="popular-badge">Most Popular</div>
+          <div class="price-header">
+            <div class="plan-icon icon-purple"><i class="fas fa-bolt"></i></div>
+            <h3 class="plan-name">Pro</h3>
+            <div class="plan-price">
+              <span class="price-currency">$</span>
+              <span class="price-amount" data-monthly="19" data-annual="15">19</span>
+              <span class="price-period">/mo</span>
+            </div>
+            <p class="plan-tagline">For active researchers &amp; students</p>
+          </div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> 100 papers per month</li>
+            <li><i class="fas fa-check"></i> Summary, critique &amp; future</li>
+            <li><i class="fas fa-check"></i> <strong>Live Q&amp;A chat</strong></li>
+            <li><i class="fas fa-check"></i> Metadata auto-extraction</li>
+            <li><i class="fas fa-check"></i> Rich PDF reports</li>
+            <li><i class="fas fa-check"></i> Priority processing</li>
+            <li class="disabled"><i class="fas fa-times"></i> API access</li>
+          </ul>
+          <a href="#app" class="btn btn-primary">Start Pro Trial</a>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="price-card">
+          <div class="price-header">
+            <div class="plan-icon icon-orange"><i class="fas fa-building"></i></div>
+            <h3 class="plan-name">Enterprise</h3>
+            <div class="plan-price">
+              <span class="price-currency">$</span>
+              <span class="price-amount" data-monthly="79" data-annual="63">79</span>
+              <span class="price-period">/mo</span>
+            </div>
+            <p class="plan-tagline">For labs, teams &amp; institutions</p>
+          </div>
+          <ul class="plan-features">
+            <li><i class="fas fa-check"></i> Unlimited papers</li>
+            <li><i class="fas fa-check"></i> All Pro features</li>
+            <li><i class="fas fa-check"></i> REST API access</li>
+            <li><i class="fas fa-check"></i> Team collaboration</li>
+            <li><i class="fas fa-check"></i> Custom branding</li>
+            <li><i class="fas fa-check"></i> SLA &amp; support</li>
+            <li><i class="fas fa-check"></i> SSO / SAML</li>
+          </ul>
+          <a href="#app" class="btn btn-outline-plan">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════ TESTIMONIALS ═══ -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Social Proof</span>
+        <h2 class="section-title">Loved by Researchers</h2>
+      </div>
+
+      <div class="testimonial-track" id="testimonialTrack">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"PaperMind cut my literature review time in half. The critique section alone saved me from citing a flawed methodology."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background: var(--purple)">DR</div>
+            <div>
+              <strong>Dr. Riya Mehta</strong>
+              <span>ML Researcher, IIT Bombay</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"The Q&amp;A chat is mind-blowing. I asked 'what dataset did they use?' and got a precise answer with the exact section — no hallucinations."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background: var(--teal)">JK</div>
+            <div>
+              <strong>James Kowalski</strong>
+              <span>PhD Candidate, Stanford</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"We integrated PaperMind into our lab's research pipeline via the API. 10x faster onboarding of new papers for our team."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background: var(--rose)">SL</div>
+            <div>
+              <strong>Dr. Sara Lindqvist</strong>
+              <span>Lab Director, Karolinska</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"The future research directions it suggests are genuinely insightful. Three of my grant proposals started from those suggestions."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background: var(--indigo)">AP</div>
+            <div>
+              <strong>Arjun Patel</strong>
+              <span>Associate Professor, UCL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prevBtn" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+        <div class="carousel-dots" id="carouselDots"></div>
+        <button class="carousel-btn" id="nextBtn" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════ APP ═══ -->
+  <section id="app" class="app-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Try It Now</span>
+        <h2 class="section-title">Analyze Your Paper</h2>
+        <p class="section-subtitle">Free · No signup required · Results in ~2 minutes</p>
+      </div>
+
+      <div class="app-wrapper">
+        <!-- Upload Panel -->
+        <div class="upload-panel" id="uploadPanel">
+          <form id="uploadForm">
+            <div class="drop-zone" id="dropZone">
+              <div class="drop-icon"><i class="fas fa-cloud-arrow-up"></i></div>
+              <h3>Drop your PDF here</h3>
+              <p>or <label for="pdfFile" class="browse-link">browse files</label></p>
+              <input type="file" id="pdfFile" accept="application/pdf" />
+              <div class="file-info" id="fileInfo" style="display:none">
+                <i class="fas fa-file-pdf"></i>
+                <span id="fileName"></span>
+                <span id="fileSize"></span>
+              </div>
+            </div>
+            <button type="submit" id="analyzeBtn" class="btn btn-primary btn-full" disabled>
+              <i class="fas fa-rocket"></i> Analyze Paper
+            </button>
+          </form>
+        </div>
+
+        <!-- Progress Panel -->
+        <div class="progress-panel" id="progressPanel" style="display:none">
+          <div class="progress-header">
+            <div class="ai-pulse"><span></span></div>
+            <h3>AI is analyzing your paper…</h3>
+          </div>
+          <div class="progress-steps" id="progressSteps">
+            <div class="prog-step" data-step="0">
+              <div class="prog-dot"></div>
+              <span class="prog-label">Extracting text</span>
+              <span class="prog-status"></span>
+            </div>
+            <div class="prog-step" data-step="1">
+              <div class="prog-dot"></div>
+              <span class="prog-label">Chunking document</span>
+              <span class="prog-status"></span>
+            </div>
+            <div class="prog-step" data-step="2">
+              <div class="prog-dot"></div>
+              <span class="prog-label">Building semantic index</span>
+              <span class="prog-status"></span>
+            </div>
+            <div class="prog-step" data-step="3">
+              <div class="prog-dot"></div>
+              <span class="prog-label">Generating insights</span>
+              <span class="prog-status"></span>
+            </div>
+            <div class="prog-step" data-step="4">
+              <div class="prog-dot"></div>
+              <span class="prog-label">Analysis complete</span>
+              <span class="prog-status"></span>
+            </div>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+          </div>
+          <p class="progress-status-msg" id="progressMsg" aria-live="polite" aria-atomic="true">Starting up…</p>
+          <div class="error-box" id="errorBox" style="display:none">
+            <i class="fas fa-triangle-exclamation"></i>
+            <div class="error-content">
+              <h4 class="error-title">Analysis Failed</h4>
+              <p id="errorBoxMsg"></p>
+            </div>
+            <button class="btn btn-outline-plan btn-sm" id="retryBtn" onclick="document.getElementById('analyzeNewBtn').click()">Try Again</button>
+          </div>
+        </div>
+
+        <!-- Results Panel -->
+        <div class="results-panel" id="resultsPanel" style="display:none">
+          <!-- Metadata Card -->
+          <div class="meta-card" id="metaCard">
+            <div class="meta-icon"><i class="fas fa-file-lines"></i></div>
+            <div class="meta-info">
+              <h4 id="metaTitle">—</h4>
+              <p id="metaAuthors">—</p>
+              <div class="meta-tags">
+                <span class="meta-tag" id="metaYear" style="display:none"><i class="fas fa-calendar"></i> <span></span></span>
+                <span class="meta-tag" id="metaDoi" style="display:none"><i class="fas fa-link"></i> <span></span></span>
+                <span class="meta-tag" id="metaWords"><i class="fas fa-text-size"></i> <span></span></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab Navigation -->
+          <div class="result-tabs">
+            <button class="tab-btn active" data-tab="summary" id="tab-summary">
+              <i class="fas fa-list-ul"></i> Summary
+            </button>
+            <button class="tab-btn" data-tab="critique" id="tab-critique">
+              <i class="fas fa-microscope"></i> Critique
+            </button>
+            <button class="tab-btn" data-tab="future" id="tab-future">
+              <i class="fas fa-compass-drafting"></i> Future
+            </button>
+            <button class="tab-btn" data-tab="excerpts" id="tab-excerpts">
+              <i class="fas fa-bookmark"></i> Excerpts
+            </button>
+            <button class="tab-btn" data-tab="citations" id="tab-citations">
+              <i class="fas fa-graduation-cap"></i> Citations
+            </button>
+          </div>
+
+          <!-- Skeleton Template -->
+          <template id="skeletonTemplate">
+            <div class="skeleton-container">
+              <div class="skeleton-line" style="width: 80%"></div>
+              <div class="skeleton-line" style="width: 100%"></div>
+              <div class="skeleton-line" style="width: 90%"></div>
+              <div class="skeleton-line" style="width: 60%"></div>
+              <br>
+              <div class="skeleton-line" style="width: 85%"></div>
+              <div class="skeleton-line" style="width: 95%"></div>
+              <div class="skeleton-line" style="width: 70%"></div>
+            </div>
+          </template>
+
+          <div class="tab-content" id="tabContent">
+            <div class="tab-pane active" id="pane-summary"><div class="result-text" id="summaryText"></div></div>
+            <div class="tab-pane" id="pane-critique"><div class="result-text" id="critiqueText"></div></div>
+            <div class="tab-pane" id="pane-future"><div class="result-text" id="futureText"></div></div>
+            <div class="tab-pane" id="pane-excerpts"><div id="excerptsContainer"></div></div>
+            <div class="tab-pane" id="pane-citations"><div id="citationsContainer"></div></div>
+          </div>
+
+          <div class="results-actions">
+            <button id="downloadReportBtn" class="btn btn-primary">
+              <i class="fas fa-download"></i> Download PDF Report
+            </button>
+            <button id="analyzeNewBtn" class="btn btn-ghost">
+              <i class="fas fa-plus"></i> Analyze Another Paper
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q&A Chat Panel -->
+      <div class="chat-panel" id="chatPanel" style="display:none">
+        <div class="chat-header">
+          <div class="chat-header-left">
+            <div class="chat-avatar"><i class="fas fa-brain"></i></div>
+            <div>
+              <h4>Chat with Your Paper</h4>
+              <span class="chat-online"><span class="online-dot"></span> Ready to answer</span>
+            </div>
+          </div>
+          <button class="chat-clear-btn" id="clearChatBtn" title="Clear chat">
+            <i class="fas fa-trash-can"></i>
+          </button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+          <div class="chat-bubble ai">
+            <div class="bubble-icon"><i class="fas fa-brain"></i></div>
+            <div class="bubble-text">
+              Hi! I've read your paper. Ask me anything — methodology, findings, limitations, or anything else you're curious about.
+            </div>
+          </div>
+        </div>
+        <div class="chat-input-wrap">
+          <input type="text" id="chatInput" class="chat-input" placeholder="Ask anything about this paper…" autocomplete="off" />
+          <button id="chatSendBtn" class="chat-send-btn" aria-label="Send message">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-icon"><i class="fas fa-brain"></i></div>
+            <span>Paper<span class="logo-accent">Mind</span></span>
+          </div>
+          <p>Empowering researchers worldwide with AI-driven insights for faster, deeper understanding of academic literature.</p>
+          <div class="social-links">
+            <a href="https://x.com/VEERAKARTH235" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/karthickkumar-s-b04a10348/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/veerakarthick235" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.youtube.com/@VEERAKARTHICK-k9n" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#app">Try Free</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Tech Stack</h4>
+          <ul>
+            <li><a href="#">Gemini 3.5 Flash &amp; 3.1 Pro</a></li>
+            <li><a href="#">FAISS Cosine Search</a></li>
+            <li><a href="#">SentenceTransformers</a></li>
+            <li><a href="#">Flask + RAG Pipeline</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-newsletter">
+          <h4>Stay Updated</h4>
+          <p>Get notified about new features and AI research tips.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="you@university.edu" id="newsletterEmail" />
+            <button class="btn btn-primary btn-sm" id="newsletterBtn">Subscribe</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 PaperMind AI. All rights reserved.</p>
+        <p>Built with <i class="fas fa-heart" style="color:var(--rose)"></i> for researchers worldwide</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button id="scrollTopBtn" class="scroll-top" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="app.js"></script>
+</body>
+</html>
