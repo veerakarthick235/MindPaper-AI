@@ -1,4 +1,4 @@
-# PaperMind AI — Research Paper Analyzer (SaaS Edition)
+# MindPaper AI — Research Paper Analyzer (SaaS Edition)
 
 > **Transform any research PDF into actionable insights in minutes** — powered by Gemini 2.5 Flash, FAISS, and a real-time RAG pipeline.
 
